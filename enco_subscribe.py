@@ -1,12 +1,10 @@
 import requests
 
-from mqtt_subscription import run_mqtt_subscription
-
 auth_key = 'Grpc-Metadata-Authorization'
 api_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5X2lkIjoiM2NjYmIwYzUtNWY0Yy00MmI1LWJiYmEtYTBmZTg3YmZlYjMxIiwiYXVkIjoiYXMiLCJpc3MiOiJhcyIsIm5iZiI6MTY4Nzc1NDU2Miwic3ViIjoiYXBpX2tleSJ9.bwoKdc3kZw8d3LeJx_DjLWwydyiz2jq35fgZJOePCBI'
 display_name = 'EnCo'
 
-def get_api_data():
+def get_app_topics():
 
     get_orgs = requests.get(f'http://3.1.189.234:8081/api/organizations?limit=1&search={display_name}', headers={auth_key: api_token})
     get_org_id = get_orgs.json().get('result')[0].get('id') if get_orgs.json().get('result') else 0
@@ -29,12 +27,9 @@ def get_api_data():
             devEui = device.get('devEUI')
             topic = f'application/{appID}/device/{devEui}/event/up'
             topic_list.append(topic)
-            print(f"{topic = }")
-        # result = run_mqtt_subscription(topic)
-        # result_list.append(result)
-        # print(f'{result = }')
+
     return topic_list
 
 
 if __name__ == '__main__':
-    get_api_data()
+    get_app_topics()
