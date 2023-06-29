@@ -33,7 +33,11 @@ def subscribe(client, topic):
         # print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
         message_result = json.loads(msg.payload.decode())
         result = {"topic": msg.topic, "result": message_result}
-        clean_data(topic_list, result)
+        data = clean_data(topic_list, result)
+        if data:
+            pass
+            # print(data)
+        # print("---------------------")
 
     client.subscribe(topic)
     client.on_message = on_message
