@@ -1,15 +1,15 @@
 # EncoProject
 
-# First Install Requirement
+# 1. Install Requirement
 ```bash
 pip freeze -r requirement.txt
 ```
 
-# Second Create .env
+# 2. Create .env
 
-# Third Set Keys and Values in .env
+# 3. Set Keys and Values in .env
 
-# Finally Run main.py 
+# 4. Run main.py 
 > for Mqtt doesn't sent param
 
 > for Iot-Core sent param = "iot_core"
