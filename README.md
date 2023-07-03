@@ -1,6 +1,6 @@
 # EncoProject
 
-# 1. Install Requirement
+# 1. Create Venv and Install Requirement
 ```bash
 pip freeze -r requirement.txt
 ```
