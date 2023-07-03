@@ -19,14 +19,14 @@ INFLUXDB_BUCKET =
 INFLUXDB_API_TOKEN = 
 
 
-# /home/swd125/Desktop/Python/EncoProject/enco_subscribe.py
+# ./EncoProject/enco_subscribe.py
 ENCO_CHIRPSTACK_HOST = 
 ENCO_CHIRPSTACK_AUTH_KEY = 
 ENCO_CHIRPSTACK_API_TOKEN = 
 ENCO_CHIRPSTACK_DISPLAY_NAME = 
 
 
-# /home/swd125/Desktop/Python/EncoProject/influxdb.py
+# ./EncoProject/influxdb.py
 INFLUXDB_HOSTNAME = 
 INFLUXDB_PORT = 
 INFLUXDB_TOKEN = 
@@ -34,7 +34,7 @@ INFLUXDB_BUCKET =
 INFLUXDB_ORG = 
 
 
-# /home/swd125/Desktop/Python/EncoProject/mqtt_subscription_v1.py
+# ./EncoProject/mqtt_subscription_v1.py
 ENCO_MQTT_BROKER = 
 ENCO_MQTT_PORT = 
 ENCO_MQTT_CLIENT_ID = 
