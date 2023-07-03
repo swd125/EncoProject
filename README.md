@@ -6,6 +6,9 @@ pip freeze -r requirement.txt
 ```
 
 # 2. Create .env
+```bash
+touch .env
+```
 
 # 3. Set Keys and Values in .env
 ```bash
