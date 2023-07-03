@@ -3,14 +3,18 @@ import ssl
 import time
 from paho.mqtt import client as mqtt_client
 
-from clean_data import clean_data
+from clean_data import clean_data, make_influx_data
 from enco_subscribe import get_app_topics
+from influxdb import InfluxDB
+from dotenv import dotenv_values
+
+env = dotenv_values(".env")
 
 
-broker = '3.1.189.234'
-port = 1883
-client_id = f'enco_subscription'
-topic = 'application/+/device/#'
+broker = env.get('ENCO_MQTT_BROKER')
+port = env.get('ENCO_MQTT_PORT')
+client_id = env.get('ENCO_MQTT_CLIENT_ID')
+topic = env.get('ENCO_MQTT_TOPIC')
 topic_list = get_app_topics()
 
 
@@ -35,9 +39,10 @@ def subscribe(client, topic):
         result = {"topic": msg.topic, "result": message_result}
         data = clean_data(topic_list, result)
         if data:
-            pass
-            # print(data)
-        # print("---------------------")
+            make_data = make_influx_data(data)
+            InfluxDB().write_json_data(make_data)
+            print(make_data)
+            print("---------------------")
 
     client.subscribe(topic)
     client.on_message = on_message
