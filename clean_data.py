@@ -8,10 +8,8 @@ def clean_data(app_list, message):
 
     if topic in app_list and result:
         if result.get('object'):
-            # print(result)
             for key, value in result['object'].items():
                 if key in keys_list:
-                    # print(f"{topic} >>> object : {result.get('object')}")
                     return message
     return {}
 

@@ -71,12 +71,12 @@ class Mqtt_Subscription_v1():
                 if data:
                     make_data = make_influx_data(data)
                     InfluxDB().write_json_data(make_data)
-                    print("data = ", make_data)
+
             if self.client_id == 'iot_core_subscription_v1':
                 data = iot_core_clean_data(result)
                 if data:
                     InfluxDB().write_json_data(data)
-                    print(f"{data = }")
+
 
         self.client.subscribe(topic)
         self.client.on_message = on_message
@@ -86,7 +86,7 @@ class Mqtt_Subscription_v1():
     def run_subscribe(self, topic):
         client = self.connect_mqtt()
         self.subscribe(topic)
-        client.loop_forever()
+        client.loop(timeout=60)
 
 
 if __name__ == '__main__':

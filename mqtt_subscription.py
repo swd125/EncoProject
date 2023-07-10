@@ -20,7 +20,6 @@ topic_list = get_app_topics()
 
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
-        print("on_connect")
         if rc == 0:
             print("Connected to MQTT Broker!")
         else:
@@ -34,15 +33,12 @@ def connect_mqtt():
 
 def subscribe(client, topic):
     def on_message(client, userdata, msg):
-        # print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
         message_result = json.loads(msg.payload.decode())
         result = {"topic": msg.topic, "result": message_result}
         data = clean_data(topic_list, result)
         if data:
             make_data = make_influx_data(data)
             InfluxDB().write_json_data(make_data)
-            print(make_data)
-            print("---------------------")
 
     client.subscribe(topic)
     client.on_message = on_message
